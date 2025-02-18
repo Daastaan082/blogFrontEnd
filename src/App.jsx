@@ -6,6 +6,7 @@ import { Route, Routes } from 'react-router-dom';
 import CreateBlog from './Pages/CreateBlog';
 import { ToastContainer, toast } from 'react-toastify';
 import BlogDetail from './Pages/BlogDetail';
+import EditBlog from './Pages/EditBlog';
 const App = () => {
   return (
     <>
@@ -16,6 +17,7 @@ const App = () => {
       <Route path="/" element={<Home />} />
       <Route path="/blog/:id" element={<BlogDetail/>} />
       <Route path="/create" element={<CreateBlog/>} />
+      <Route path='/blog/edit/:id' element={ <EditBlog/>} />
     </Routes>
     <ToastContainer />
     </>

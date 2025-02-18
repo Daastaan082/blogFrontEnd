@@ -38,7 +38,7 @@ const CreateBlog = () => {
       <a href='/' className='btn btn-dark'>Back</a>
     </div>
     <div className='card border-0 shadow-lg'>
-        <form onSubmit={handleSubmit(formSubmit)}>
+        <form autocomplete="off" onSubmit={handleSubmit(formSubmit)}>
             <div className='card-body'>
                 <div className="mb-3">
                     <label className='form-label'>Title</label>
