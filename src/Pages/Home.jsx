@@ -1,7 +1,19 @@
-import React from 'react'
+import React, { useState , useEffect } from 'react';
 import Card from '../Components/Card'
 import { Link } from 'react-router-dom'
 const Home = () => {
+   
+  const [blogs,setBlogs] = useState()
+  const fetchBlogs = async () =>{
+    const res = await fetch("http://localhost:8000/api/blogsee")
+    const result = await res.json()
+    setBlogs(result.data)
+    console.log(result)
+  }
+  useEffect(() => {
+    fetchBlogs();
+  }, [])
+  
   return (
     <>
     
@@ -13,14 +25,12 @@ const Home = () => {
         </Link>
       </div>
       <div className='row'>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
+        
+           {
+            (blogs) && blogs.map((blog) => {
+            return (<Card blog={blog} key={blog.id}/>)
+           })
+           }
         </div>
     </div>
     </>

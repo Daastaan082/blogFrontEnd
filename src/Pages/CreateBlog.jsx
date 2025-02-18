@@ -25,73 +25,61 @@ const CreateBlog = () => {
                 },
                 body:JSON.stringify(newData)
             })
-            toast("Blog Successully Created")
+            toast.success("Blog Successully Created")
 
             navigate('/')
 
           }
 
   return (
-    <>
-        <div className="container">
-            <div className='d-flex justify-content-between py-4'>
-                <h4>Create Blog</h4>
-                <Link to='/' className='btn btn-success'>
-                    Post
-                </Link>
-            </div>
-            <div className="card border-0 shadow-lg">
-                <form onSubmit={handleSubmit(formSubmit)}>
-                <div className='card-body'>
-                    <div className='mb-2'>
-                    <label htmlFor='' className='form-label'>Title</label>
-                    <input
-                     {...register('title',{required:true})} 
-                     type='text'
-                     className={`form-control ${errors.title ? 'is-invalid' : ''}`}
-                     id='Title' 
-                     placeholder='Enter your Title' />
-                     {errors.title && <p className='invalid-feedback'>Title is Required</p>}
-                    </div>
-                    <div className='mb-2'>
-                    <label htmlFor='' className='form-label'>ShortDescription</label>
-                    <textarea
-                    {...register('shortDesc')}
-                     cols='30' 
-                     rows='5' 
-                     className='form-control'></textarea>
-                    </div>
-                    
-                    <div className='mb-2'>
-                    <label htmlFor='' className='form-label'>Describtion</label>
-                    
-                    <Editor value={html} onChange={onChange}  
-                       containerProps={{style:{height:'400px'}}}
-                    />
-                    
-                    {/* <textarea className='form-control' name='' id='' cols='30' rows='10'></textarea> */}
-                    </div>
-                    <div className='mb-2'>
-                    <label htmlFor='' className='form-label'>Image</label><br/>
-                    <input type='file'/>
-                    </div>
-                    <div className='mb-2'>
-                    <label htmlFor='' 
-                    className='form-label'>Author</label>
-                    <input
-                     {...register('author',{required:true})}
-                     type='text' 
-                     className={`form-control ${errors.author ? 'is-invalid' : ''}`}
+    <div className='container mb-5'>
+    <div className="d-flex justify-content-between pt-5 mb-4">
+      <h4>Create Blog</h4>
+      <a href='/' className='btn btn-dark'>Back</a>
+    </div>
+    <div className='card border-0 shadow-lg'>
+        <form onSubmit={handleSubmit(formSubmit)}>
+            <div className='card-body'>
+                <div className="mb-3">
+                    <label className='form-label'>Title</label>
+                    <input 
+                        { ...register('title',{ required: true }) } 
+                        type="text" 
+                        className={`form-control ${errors.title && 'is-invalid'}`} 
+                        placeholder='Title' />
+                    {errors.title && <p className='invalid-feedback'>Title field is required</p>}
 
-                     placeholder='Author'/>
-                     {errors.author && <p className='invalid-feedback'>Author is Required</p>}
-                    </div>
-                    <button className='btn btn-success'>Create</button>
                 </div>
-                </form>
+                <div className="mb-3">
+                    <label className='form-label'>Short Description</label>
+                    <textarea 
+                        { ...register('shortDesc') } 
+                        cols="30" rows="5" className='form-control'></textarea>
+                </div>
+                <div className="mb-3">
+                    <label className='form-label'>Description</label>
+                    <Editor value={html} 
+                    containerProps={{ style: { height: '700px' } }}
+                    onChange={onChange} />
+                </div>
+                <div className='mb-3'>
+                    <label className='form-label'>Image</label><br/>
+                    <input   type="file" />
+                </div>
+                <div className="mb-3">
+                    <label className='form-label'>Author</label>
+                    <input 
+                        { ...register('author',{ required: true }) } 
+                        type="text" 
+                        className={`form-control ${errors.author && 'is-invalid'}`} 
+                        placeholder='Author' />
+                    {errors.author && <p className='invalid-feedback'>Author field is required</p>}
+                </div>
+                <button className='btn btn-dark'>Create</button>
             </div>
-        </div>
-    </>
+        </form>
+    </div>
+</div>
   )
 }
 
