@@ -1,7 +1,8 @@
 import React, { use, useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const BlogDetail = () => {
+    
     const [blog, setBlog] = useState([]);
     const params = useParams();
     const fetchBlog = async () => {

@@ -6,7 +6,8 @@ const Card = ({blog, blogs, setBlogs}) => {
   const deleteBlog = (id) => {
     if (confirm("Are you sure you want to delete?")) {
         const res = fetch("http://localhost:8000/api/blogs/"+id,{
-            method: 'DELETE'
+            method: 'DELETE',
+            
         });
 
         const newBlogs = blogs.filter((blog) => blog.id != id);
@@ -14,7 +15,7 @@ const Card = ({blog, blogs, setBlogs}) => {
         setBlogs(newBlogs);
         
         toast("Blog deleted successfully.");
-        navigate('/');
+        navigate('/')
     }
 }
 
